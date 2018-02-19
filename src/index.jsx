@@ -8,4 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
 
+
 ReactDOM.render(<App />, document.getElementById('react-root'));
+/*ReactDOM.render(<MessageList />, document.getElementById('react-root'));
+ReactDOM.render(<ChatBar />, document.getElementById('react-root'));*/
