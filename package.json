@@ -1,14 +1,14 @@
 {
-  "name": "react-simple-boilerplate",
+  "name": "Chatty App",
   "version": "1.0.0",
-  "description": "Simple and lightweight Boilerplate for ReactJS projects",
+  "description": "a SPA for chatting",
   "scripts": {
     "lint": "eslint --ext .jsx,.js src",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noahlotzer/react-simple-boilerplate.git"
+    "url": "https://github.com/Joe-mcgee/chatty"
   },
   "keywords": [
     "react",
@@ -19,7 +19,7 @@
     "edit",
     "webpack"
   ],
-  "author": "Noah-Jerome Lotzer <n.lotzer@neusta.de>",
+  "author": "Taylor Hulsmans",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/noahlotzer/react-simple-boilerplate/issues"
