@@ -11,6 +11,7 @@ class App extends Component {
       currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
       messages: []
     }
+
     this.addMessage = this.addMessage.bind(this)
   }
 
@@ -21,6 +22,12 @@ class App extends Component {
   console.log('connected to server')
 }
 
+  this.socket.onmessage = (event) => {
+    console.log(event)
+      const messageWId = JSON.parse(event.data)
+      const messages = this.state.messages.concat(messageWId)
+      this.setState({messages: messages})
+    }
  /* setTimeout(() => {
     console.log("Simulating incoming message");
     const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
@@ -32,12 +39,8 @@ class App extends Component {
   addMessage(username, content) {
     const newMessage = {username: username, content: content}
     this.socket.send(JSON.stringify(newMessage))
-    this.socket.onmessage = (event) => {
-      const messageWId = JSON.parse(event.data)
-      const messages = this.state.messages.concat(messageWId)
-      this.setState({messages: messages})
 
-    }
+
   }
 
 
