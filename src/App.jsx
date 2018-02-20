@@ -1,49 +1,43 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
+/*const WebSocket = require('ws')*/
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.socket = new WebSocket("ws://localhost:3001")
     this.state = {
       currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-      messages: [
-        {
-          id: 1,
-          username: "Bob",
-          content: "Has anyone seen my marbles?",
-        },
-        {
-          id: 2,
-          username: "Anonymous",
-          content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
-        }
-      ]
+      messages: []
     }
     this.addMessage = this.addMessage.bind(this)
   }
 
   componentDidMount() {
   console.log("componentDidMount <App />");
-  setTimeout(() => {
+
+  this.socket.onopen = () => {
+  console.log('connected to server')
+}
+
+ /* setTimeout(() => {
     console.log("Simulating incoming message");
-    // Add a new message to the list of messages in the data store
     const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
     const messages = this.state.messages.concat(newMessage)
-    // Update the state of the app component.
-    // Calling setState will trigger a call to render() in App and all child components.
     this.setState({messages: messages})
-  }, 3000);
+  }, 3000);*/
 }
-  getId() {
-    const number = this.state.messages.length
-    return number + 1
-  }
 
   addMessage(username, content) {
-    const newMessage = {id: this.getId(), username: username, content: content}
-    const messages = this.state.messages.concat(newMessage)
-    this.setState({messages: messages})
+    const newMessage = {username: username, content: content}
+    this.socket.send(JSON.stringify(newMessage))
+    this.socket.onmessage = (event) => {
+      const messageWId = JSON.parse(event.data)
+      const messages = this.state.messages.concat(messageWId)
+      this.setState({messages: messages})
+
+    }
   }
 
 
