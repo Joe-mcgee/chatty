@@ -1,32 +1,46 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+/*
+* Child Component
+*/
+
 class ChatBar extends Component {
   constructor(props) {
     super(props);
   }
+/**/
+  checkForPhotos(content) {
+    const photos = [];
+    const imageTest = new RegExp('.(jpg|png|gif)$');
+
+    let contentTest = content.value.split(' ');
+    contentTest.forEach((word) => {
+      if (imageTest.test(word)) {
+        photos.push(word);
+      }
+    });
+    console.log(photos)
+    return photos
+
+  }
+
   render() {
     const onSubmit = (event) => {
       event.preventDefault();
       const content = event.target.elements.messageContent;
-      let contentTest = content.value.split(' ');
-      const imageTest = new RegExp('.(jpg|png|gif)$');
-      const photos = [];
-      contentTest.forEach((word) => {
-        if (imageTest.test(word)) {
-          photos.push(word);
-        }
-      });
-      const newContent = contentTest.join(' ');
-      let user = event.target.elements.currentUser.value;
       const color = this.props.currentColor;
+      const photos = this.checkForPhotos(content);
+      let user = event.target.elements.currentUser.value;
+
       if (!user) {
         user = this.props.currentUser.name;
       }
+
       if (!content.value) {
         this.props.changeUser(user);
       } else {
-        this.props.addMessage(user, newContent, color, photos);
+        this.props.addMessage(user, content.value, color, photos);
       }
     };
     return (

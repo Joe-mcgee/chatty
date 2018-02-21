@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import Image from './Image.jsx';
 import PropTypes from 'prop-types';
+const uuidv1 = require('uuid/v1');
 
 class ImageList extends Component {
   render() {
     const imageList = this.props.photos.map((photo) => {
-      return (<Image key={this.props.id} photo={photo} />);
+      return (<Image key={uuidv1()} photo={photo} />);
     });
     return (
       <div className='photos'>
@@ -16,7 +17,7 @@ class ImageList extends Component {
 }
 
 ImageList.propTypes = {
-  photos: PropTypes.string,
+  photos: PropTypes.array,
   imageList: PropTypes.func,
   id: PropTypes.string
 };

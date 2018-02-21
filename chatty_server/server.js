@@ -5,21 +5,19 @@ const uuidv1 = require('uuid/v1');
 
 const app = express();
 
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
 // https://codereview.stackexchange.com/questions/108130/generating-a-random-hex-color
 function getRandomColor() {
   let length = 6;
-  const chars = '0123456789ABCDEF';
+  // BCDEF Lopped off to prevent colors too light for white background
+  const chars = '0123456789A';
   let hex = '#';
-  while (length--) hex += chars[(Math.random() * 16) | 0];
+  while (length--) hex += chars[(Math.random() * 11) | 0];
   return hex;
 }
 
-app.use((req, res) => {
-  res.send({ msg: 'hello' });
-});
-
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
 // instantiates a broadcast method that applies a send to all clients
 wss.broadcast = function broadcast(data) {
   wss.clients.forEach(function each(client) {
@@ -29,9 +27,12 @@ wss.broadcast = function broadcast(data) {
   });
 };
 
+app.use((req, res) => {
+  res.send({ msg: 'hello' });
+});
 wss.on('connection', (ws) => {
   // send a unique, random color, to each new web socket connection
-  ws.send(JSON.stringify({ type: 'color', color: getRandomColor() }))
+  ws.send(JSON.stringify({ type: 'color', color: getRandomColor() }));
   // broadcasts the number of people with an open websocket connection
   wss.broadcast(JSON.stringify({ type: 'count', lobbySize: wss.clients.size }));
   // handles messages sent from clients

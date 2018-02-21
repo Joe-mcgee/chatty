@@ -13,8 +13,9 @@ class NavBar extends Component {
       );
   }
 }
+
 NavBar.propTypes = {
-  count: PropTypes.string
+  count: PropTypes.number
 };
 
 export default NavBar;

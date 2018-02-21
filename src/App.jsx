@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       count: 0,
       currentColor: {color: 'blue'},
-      currentUser: {name: 'Anon'}, // optional. if currentUser is not defined, it means the user is Anonymous
+      currentUser: {name: 'Anon'},
       messages: [],
       notifications: []
     };
@@ -61,8 +61,9 @@ class App extends Component {
         }
     };
   }
-
-
+  /*
+  * Socket sending functions
+  */
   addMessage(username, content, color, photos) {
     const newMessage = {type:'postMessage', username: username, content: content, color: color, photos: photos};
     this.socket.send(JSON.stringify(newMessage));
@@ -73,8 +74,9 @@ class App extends Component {
     const newChange = {type: 'postNotification', username: newUser, content: `${old} has changed their name to ${newUser}`};
     this.socket.send(JSON.stringify(newChange));
   }
-
-
+  /*
+  * Mother render
+  */
   render() {
 
     return (

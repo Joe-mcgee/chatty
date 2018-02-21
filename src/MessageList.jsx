@@ -22,8 +22,8 @@ class MessageList extends Component {
 }
 
 MessageList.propTypes = {
-  messages: PropTypes.object,
-  notifications: PropTypes.object
+  messages: PropTypes.array,
+  notifications: PropTypes.array
 };
 
 export default MessageList;

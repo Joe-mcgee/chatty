@@ -12,7 +12,7 @@ class LobbyCount extends Component {
 }
 
 LobbyCount.propTypes = {
-  count: PropTypes.string
+  count: PropTypes.number
 };
 
 export default LobbyCount;
