@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       count: 0,
       currentColor: {color: 'blue'},
-      currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
+      currentUser: {name: "Anon"}, // optional. if currentUser is not defined, it means the user is Anonymous
       messages: [],
       notifications: []
     }
@@ -25,7 +25,7 @@ class App extends Component {
     this.socket.onopen = () => {
     console.log('connected to server')
 
-    const joined = {type: 'postNotification', username: this.state.currentUser, content:`${this.state.currentUser.name} has joined the lobby.`}
+    const joined = {type: 'postNotification', username: this.state.currentUser.name, content:`${this.state.currentUser.name} has joined the lobby.`}
     this.socket.send(JSON.stringify(joined))
     }
 
@@ -39,7 +39,6 @@ class App extends Component {
             this.setState({notifications: notifications})
             break;
           case 'incomingMessage':
-
             const messages = this.state.messages.concat(data)
             this.setState({messages: messages})
             break;
@@ -80,7 +79,7 @@ class App extends Component {
       <div>
       <NavBar count={this.state.count} />
       <MessageList messages={this.state.messages} notifications={this.state.notifications} />
-      <ChatBar currentUser={this.state.currentUser.name} changeUser={this.changeUser}  addMessage={this.addMessage} newUser={this.newUser} currentColor={this.state.currentColor}/>
+      <ChatBar currentUser={this.state.currentUser} changeUser={this.changeUser}  addMessage={this.addMessage} newUser={this.newUser} currentColor={this.state.currentColor}/>
       </div>
     );
   }

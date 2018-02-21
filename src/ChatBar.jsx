@@ -21,6 +21,7 @@ class ChatBar extends Component {
       const color = this.props.currentColor
       if (!user) {
         user = this.props.currentUser.name
+        console.log(user)
       }
       if (!content.value) {
         this.props.changeUser(user)

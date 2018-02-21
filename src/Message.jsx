@@ -8,7 +8,7 @@ class Message extends Component {
       <span className="message-username" style={this.props.message.color}>{this.props.message.username}</span>
       <span className="message-content">
       {this.props.message.content}
-      <ImageList photos={this.props.message.photos} />
+      <ImageList id={this.props.message.id} photos={this.props.message.photos} />
 
       </span>
     </div>
