@@ -12,10 +12,11 @@ class ChatBar extends Component {
       if (!user) {
         user = this.props.currentUser.name
       }
-      console.log(user)
-      this.props.addMessage(user, content.value)
-
-
+      if (!content.value) {
+        this.props.changeUser(user)
+      } else {
+        this.props.addMessage(user, content.value)
+      }
     }
     return (
       <form onSubmit={onSubmit}>

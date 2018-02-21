@@ -9,9 +9,11 @@ class App extends Component {
     this.socket = new WebSocket("ws://localhost:3001")
     this.state = {
       currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
-      messages: []
+      messages: [],
+      notifications: []
     }
     this.addMessage = this.addMessage.bind(this)
+    this.changeUser = this.changeUser.bind(this)
   }
 
   componentDidMount() {
@@ -22,13 +24,22 @@ class App extends Component {
 }
 
   this.socket.onmessage = (event) => {
-      const messageWId = JSON.parse(event.data)
-      if (messageWId.username !== this.state.currentUser) {
-        this.setState({currentUser: messageWId.username})
+      const data = JSON.parse(event.data)
+      switch(data.type) {
+        case 'incomingNotification':
+
+          this.setState({currentUser: {name: data.username}})
+          const notifications = this.state.notifications.concat(data)
+          this.setState({notifications: notifications})
+          break;
+        case 'incomingMessage':
+
+          const messages = this.state.messages.concat(data)
+          this.setState({messages: messages})
+
+
+          break
       }
-      const messages = this.state.messages.concat(messageWId)
-      console.log(messages)
-      this.setState({messages: messages})
     }
  /* setTimeout(() => {
     console.log("Simulating incoming message");
@@ -39,16 +50,24 @@ class App extends Component {
 }
 
   addMessage(username, content) {
-    const newMessage = {username: username, content: content}
+    const newMessage = {type:'postMessage', username: username, content: content}
     this.socket.send(JSON.stringify(newMessage))
   }
+
+  changeUser(newUser) {
+    const old = this.state.currentUser['name'];
+    const newChange = {type: 'postNotification', username: newUser, content: `${old} has changed their name to ${newUser}`}
+    this.socket.send(JSON.stringify(newChange))
+
+  }
+
 
   render() {
 
     return (
       <div>
-      <MessageList messages={this.state.messages} />
-      <ChatBar currentUser={this.state.currentUser}  addMessage={this.addMessage} newUser={this.newUser}/>
+      <MessageList messages={this.state.messages} notifications={this.state.notifications} />
+      <ChatBar currentUser={this.state.currentUser} changeUser={this.changeUser}  addMessage={this.addMessage} newUser={this.newUser}/>
       </div>
     );
   }
