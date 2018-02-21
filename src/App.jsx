@@ -61,8 +61,8 @@ class App extends Component {
   }, 3000);*/
 }
 
-  addMessage(username, content, color) {
-    const newMessage = {type:'postMessage', username: username, content: content, color: color}
+  addMessage(username, content, color, photos) {
+    const newMessage = {type:'postMessage', username: username, content: content, color: color, photos: photos}
     this.socket.send(JSON.stringify(newMessage))
   }
 
