@@ -9,13 +9,14 @@ class ChatBar extends Component {
       event.preventDefault();
       const content = event.target.elements.messageContent;
       let user = event.target.elements.currentUser.value;
+      const color = this.props.currentColor
       if (!user) {
         user = this.props.currentUser.name
       }
       if (!content.value) {
         this.props.changeUser(user)
       } else {
-        this.props.addMessage(user, content.value)
+        this.props.addMessage(user, content.value, color)
       }
     }
     return (
