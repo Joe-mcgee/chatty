@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class ChatBar extends Component {
   constructor(props) {
@@ -21,7 +22,6 @@ class ChatBar extends Component {
       const color = this.props.currentColor
       if (!user) {
         user = this.props.currentUser.name
-        console.log(user)
       }
       if (!content.value) {
         this.props.changeUser(user)
@@ -41,4 +41,10 @@ class ChatBar extends Component {
   }
 }
 
+ChatBar.propTypes = {
+  currentUser: PropTypes.object,
+  changeUser: PropTypes.func,
+  addMessage: PropTypes.func,
+  currentColor: PropTypes.object,
+}
 export default ChatBar;

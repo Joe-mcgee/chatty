@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class LobbyCount extends Component {
   render() {
@@ -8,6 +9,10 @@ class LobbyCount extends Component {
       </div>
       )
   }
+}
+
+LobbyCount.propTypes = {
+  count: PropTypes.string
 }
 
 export default LobbyCount

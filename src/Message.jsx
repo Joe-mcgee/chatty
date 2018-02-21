@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ImageList from './ImageList.jsx';
+import PropTypes from 'prop-types';
 
 class Message extends Component {
   render() {
@@ -16,4 +17,8 @@ class Message extends Component {
   }
 }
 
+Message.propTypes = {
+  message: PropTypes.object,
+  notifications: PropTypes.object
+}
 export default Message

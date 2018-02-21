@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Image from './Image.jsx';
+import PropTypes from 'prop-types';
 
 class ImageList extends Component {
   render() {
@@ -12,6 +13,12 @@ class ImageList extends Component {
       </div>
       )
   }
+}
+
+ImageList.propTypes = {
+  photos: PropTypes.string,
+  imageList: PropTypes.func,
+  id: PropTypes.string
 }
 
 export default ImageList
