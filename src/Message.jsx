@@ -20,5 +20,5 @@ class Message extends Component {
 Message.propTypes = {
   message: PropTypes.object,
   notifications: PropTypes.object
-}
-export default Message
+};
+export default Message;

@@ -7,11 +7,11 @@ class MessageList extends Component {
   render() {
     const messageList = this.props.messages.map((message) => {
       return (<Message key={message.id} message={message} />);
-    })
+    });
 
     const notificationList = this.props.notifications.map((notification) => {
-      return (<MessageNotification key={notification.id} content={notification.content} />)
-    })
+      return (<MessageNotification key={notification.id} content={notification.content} />);
+    });
   return (
     <main className="messages">
     {messageList}
@@ -24,8 +24,6 @@ class MessageList extends Component {
 MessageList.propTypes = {
   messages: PropTypes.object,
   notifications: PropTypes.object
-}
+};
 
-
-
-export default MessageList
+export default MessageList;

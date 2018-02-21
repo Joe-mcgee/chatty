@@ -7,12 +7,12 @@ class MessageNotification extends Component {
     <div className='message system'>
       <p>{this.props.content}</p>
     </div>
-    )
+    );
   }
 }
 
 MessageNotification.propTypes = {
   content: PropTypes.string
-}
+};
 
-export default MessageNotification
+export default MessageNotification;

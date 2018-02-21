@@ -8,10 +8,10 @@ class Image extends Component {
       <div>
         <img src={this.props.photo} />
       </div>
-      )
+      );
   }
 }
 Image.propTypes = {
   photo: PropTypes.string
-}
-export default Image
+};
+export default Image;

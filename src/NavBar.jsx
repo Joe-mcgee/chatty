@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import LobbyCount from './LobbyCount.jsx'
+import LobbyCount from './LobbyCount.jsx';
 
 class NavBar extends Component {
   render() {
@@ -10,11 +10,11 @@ class NavBar extends Component {
         <a href="/" className="navbar-brand">Chatty</a>
         <LobbyCount count={this.props.count} />
       </nav>
-      )
+      );
   }
 }
 NavBar.propTypes = {
   count: PropTypes.string
-}
+};
 
-export default NavBar
+export default NavBar;

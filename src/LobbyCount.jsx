@@ -7,12 +7,12 @@ class LobbyCount extends Component {
       <div className='lobby-count'>
         <h3> {this.props.count} users online </h3>
       </div>
-      )
+      );
   }
 }
 
 LobbyCount.propTypes = {
   count: PropTypes.string
-}
+};
 
-export default LobbyCount
+export default LobbyCount;
