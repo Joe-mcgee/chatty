@@ -37,16 +37,17 @@ class ChatBar extends Component {
         user = this.props.currentUser.name;
       }
 
-      if (!content.value) {
+      if (!content.value || this.props.currentUser !== user) {
         this.props.changeUser(user);
-      } else {
+      }
+      if (content.value) {
         this.props.addMessage(user, content.value, color, photos);
       }
     };
     return (
       <form onSubmit={onSubmit}>
     <footer className='chatbar'>
-      <input className='chatbar-username' name='currentUser' placeholder={this.props.currentUser.name} />
+      <input className='chatbar-username' name='currentUser' defaultValue={this.props.currentUser.name} />
       <input className='chatbar-message' name='messageContent' placeholder='type a message and hit ENTER' />
       <input type='submit' style={{visibility: 'hidden'}} />
     </footer>
