@@ -1,45 +1,51 @@
-React Boilerplate
-=====================
+# Chatty
+A Client Side group chat application built with React utilizing Web Sockets
 
-A minimal and light dev environment for ReactJS.
+![one](https://github.com/Joe-mcgee/chatty/blob/master/screenshots/one.jpg)
+![two](https://github.com/Joe-mcgee/chatty/blob/master/screenshots/2.jpg)
+![three](https://github.com/Joe-mcgee/chatty/blob/master/screenshots/3.jpg)
+![four](https://github.com/Joe-mcgee/chatty/blob/master/screenshots/4.jpg)
 
-### Usage
+## Getting Started
 
-Clone the boilerplate and create your own git repo.
+This version was built with
+  -[npm](https://www.npmjs.com/)
+  -[nodejs](https://nodejs.org/en/)
+  -[express](https://expressjs.com/)
+  -[babel](https://babeljs.io/)
+  -[css-loader](https://github.com/webpack-contrib/css-loader)
+  -[node-sass](https://github.com/sass/node-sass)
+  -[sockjs-client](https://github.com/sockjs/sockjs-client)
+  -[style-loader](https://github.com/webpack-contrib/style-loader)
+  -[webpack](https://webpack.js.org/)
+  -[prop-types](https://www.npmjs.com/package/prop-types)
+  -[react](https://reactjs.org/)
+  -[uuid](https://www.npmjs.com/package/uuid)
+  -[ws](https://www.npmjs.com/package/ws)
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+  
+To Install
+1. Clone this repo onto your machine
+2. This folder contains two servers, so first cd into its root and run
+  `npm init`
+  - This will init the chatty server, to initialize full capability
+3. cd into /chatty_server and
+  `npm init`
+  -this will initialize the websocket server
 
-Install the dependencies and start the server.
+4. in two separate terminal windows, one for the root and /chatty_server, run
+  `npm start`
+  - each will start their respective servers
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
+5. open localhost:3000 on as many windows you want and start chatting!
 
-### Static Files
+### How to Use
 
-You can store static files like images, fonts, etc in the `build` folder.
+Remain Anonymous or append a username, simple type it into the left field and add your text in the right!  
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
+One can insert a picture if they copy paste a jpg, gif or png into the text field.
 
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
-
-### Dependencies
-
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+#### Features for Next Version
+- Add a database to save conversations
+- more picture support
+- usernames for repeat users
