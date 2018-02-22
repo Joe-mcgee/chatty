@@ -9,7 +9,8 @@ class ChatBar extends Component {
   constructor(props) {
     super(props);
   }
-/**/
+
+/*Methods*/
   checkForPhotos(content) {
     const photos = [];
     const imageTest = new RegExp('.(jpg|png|gif)$');
@@ -20,7 +21,6 @@ class ChatBar extends Component {
         photos.push(word);
       }
     });
-    console.log(photos)
     return photos
 
   }

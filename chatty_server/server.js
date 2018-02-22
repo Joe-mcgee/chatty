@@ -30,6 +30,7 @@ wss.broadcast = function broadcast(data) {
 app.use((req, res) => {
   res.send({ msg: 'hello' });
 });
+
 wss.on('connection', (ws) => {
   // send a unique, random color, to each new web socket connection
   ws.send(JSON.stringify({ type: 'color', color: getRandomColor() }));

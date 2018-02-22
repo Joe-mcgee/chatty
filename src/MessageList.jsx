@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Message from './Message.jsx';
 import MessageNotification from './MessageNotification.jsx';
 import PropTypes from 'prop-types';
-
+/*
+* Child Component
+*/
 class MessageList extends Component {
   render() {
     const messageList = this.props.messages.map((message) => {

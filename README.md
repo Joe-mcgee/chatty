@@ -27,10 +27,10 @@ This version was built with
 To Install
 1. Clone this repo onto your machine
 2. This folder contains two servers, so first cd into its root and run
-  `npm init`
+  `npm i`
   - This will init the chatty server, to initialize full capability
 3. cd into /chatty_server and
-  `npm init`
+  `npm i`
   -this will initialize the websocket server
 
 4. in two separate terminal windows, one for the root and /chatty_server, run
