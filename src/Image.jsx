@@ -6,7 +6,7 @@ class Image extends Component {
 
     return (
       <div>
-        <img src={this.props.photo} style={{'max-width': '60%'}} />
+        <img src={this.props.photo} style={{'maxWidth': '60%'}} />
       </div>
       );
   }
